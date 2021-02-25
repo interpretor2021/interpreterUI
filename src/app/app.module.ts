@@ -11,6 +11,7 @@ import { PageContentComponent } from './layout/page-content/page-content.compone
 import { SearchComponent } from './pages/search/search.component';
 import { UploadComponent } from './pages/upload/upload.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeComponent } from './pages/home/home.component';
 
 
 
@@ -22,6 +23,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
     PageContentComponent,
     SearchComponent,
     UploadComponent,
+    HomeComponent,
     
   ],
   imports: [

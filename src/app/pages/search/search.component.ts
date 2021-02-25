@@ -10,6 +10,14 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class SearchComponent implements OnInit {
   files:any=[]
   fileURL=''
+  filecontent=''
+  searchTxt:string=''
+  fileType:string=''
+
+  types : any =[{value:"all", title:'ALL'},
+                        {value:"pdf", title:'PDF'},
+                        {value:"txt", title:'TXT'},
+                        {value:"jpg", title:'JPG'}]
   
   modalRef!: BsModalRef;
   constructor(private searchService: SearchService, private modalService: BsModalService) { }
@@ -19,9 +27,17 @@ export class SearchComponent implements OnInit {
     this.getFile()
   }
 
-  openModal(template: TemplateRef<any>, filename:string) {
+  openModal(template: TemplateRef<any>, file:any) {
     this.modalRef = this.modalService.show(template);
-    this.fileURL= filename
+    this.fileURL= file.filename
+    console.log('he---------', file,this.fileURL)
+    //if(file.filetype !=)
+
+    this.searchService.getFilePreview(this.fileURL).subscribe((data:any) =>{
+      this.filecontent = data.response;
+      console.log('this:', this.files)
+    })
+
   }
 
   getFiles(){
@@ -34,12 +50,15 @@ export class SearchComponent implements OnInit {
   getFile(){
     this.searchService.getFile().subscribe((data) =>{
       // this. files= data;
-      console.log('this data is:', data)
+      console.log('this data:', data)
     })
   }
 
-  showText(){
-
+  searchText(text:string, type:string){
+    this.searchService.searchtext(this.searchTxt, type).subscribe((data) =>{
+      this. files= data;
+      console.log('this:', this.files)
+    })
   }
 
   

@@ -7,7 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class SearchService {
 
-  private baseUrl = 'http://localhost:8080';
+  //private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:7015/interpretor/';
 
   constructor(private http: HttpClient) {
     
@@ -20,10 +21,23 @@ export class SearchService {
       {name:"test2" ,size:"1232"},
       {name:"test3" , size:"3232"},
     ]
-    return  of(filerec)
+    //return  of(filerec)
+    return this.http.get(`${this.baseUrl}filelistallcloud`)
+    
   }
 
   getFile(){
-    return this.http.get('/assets/test.txt')  
+    //return this.http.get('/assets/test.txt') 
+    return this.http.get(`${this.baseUrl}`)
+  }
+
+  getFilePreview(fileName:string){
+    console.log('sdfsdfsd' , fileName)
+    return this.http.get(`${this.baseUrl}extracttext?file=` + fileName)
+  }
+
+  searchtext(searchText:string, type:string){
+    console.log('sdfsdfsd' , searchText)
+    return this.http.get(`${this.baseUrl}searchtext?text=` + searchText + '&type=' + type)
   }
 }

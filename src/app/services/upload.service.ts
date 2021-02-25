@@ -7,27 +7,35 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadService {
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://localhost:7015/interpretor/';
   
   constructor(private http: HttpClient) {
 
   }
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(file: File): Observable<any> {
+  // upload(file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', `${this.baseUrl}uploadFileCloud/`, formData, {
       reportProgress: true,
       responseType: 'json'
     });
 
-    return this.http.request(req);
+    //return this.http.request(req);
+
+    
+    const formdata: FormData = new FormData();  
+    
+    formdata.append('file', file);  
+   
+    return this.http.post(`${this.baseUrl}uploadFile/` , formdata);  
   }
 
   getFiles(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/files`);
+    return this.http.get(`${this.baseUrl}files/`);
   }
   
  

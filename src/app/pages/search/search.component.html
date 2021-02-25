@@ -1,0 +1,60 @@
+<div class="pageHeaderLabel">    
+    <h3 class="centerText">Text Search Page</h3>
+    <br><br><br>
+</div>
+
+<div class="row offset-1 col-10" >
+    <div class="card col-12 mt-3 noLRPadding">
+        <div class="card col-12 card-header">
+            <div class="row">
+            <div class="col-6"><input type="text" name="searchFile" placeholder="Please enter file name" maxlength="100" size="40"></div>
+            <div class="col-2"><button type="button" (click) = "showText()" class="btn btn-outline-secondary btn-sm ">Search</button></div>
+            
+        </div> </div>
+    </div>
+</div>
+
+
+    
+  
+
+
+<div class="row offset-1 col-10" >
+    <div class="card col-12 mt-3 noLRPadding">
+        <div class="card-header">List of Files</div>
+    <div class="container-flud col-12 noLRPadding" style="background-color: bisque;">
+    <div class="row no-gutters col-12 colHeader" >    
+        <div class="col-3 colHeader">Name</div>
+        <div class="col-3 colHeader">Type</div>
+        <div class="col-3 colHeader"></div>
+        <div class="col-2 colHeader"></div>         
+    </div>
+    <div class="row no-gutters col-12" *ngFor="let file of files let i=index" [ngClass]="{'oddRow': i%2==1}">
+        <div class="col-3 listText"><a class="nav-link" routerLink="/upload">{{file?.name}}</a></div>
+        <div class="col-3 listText">{{file?.size}}</div>
+        <!-- <div class="col-3 listText" style="text-align: right;"><button type="button" (click) = "showText()" class="btn btn-outline-secondary btn-sm">Preview</button></div> -->
+        <div class="col-3 listText" style="text-align: right;">
+        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="openModal(template, '/assets/img6330.jpg')">Preview</button>
+        </div>
+        <div class="col-2 listText"><button type="button" (click) = "showText()" class="btn btn-outline-secondary btn-sm">Read out Loud</button></div>
+    </div>
+</div>
+</div>
+</div>
+
+
+<ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Preview Image</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <div class="previewImage">      
+            <img [src]="fileURL" height="200" *ngIf="fileURL">
+          </div>
+    </div>
+  </ng-template>
+
+

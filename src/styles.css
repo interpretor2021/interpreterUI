@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+  }
+  
+  .full-height {
+    height: 100%;
+  }
+
+  .top-header-height{
+    height: 10vh;
+  }
+
+  .content-height{
+    height: 90vh; 
+  }
+
+  .left-sidenav-height{
+    height: 90vh; 
+    background-color:#343a40; ;
+  }
+
+
+  .centerText{
+      text-align: center;
+      vertical-align: middle;
+  }
+
+  .pageHeaderLabel{
+    padding-top: 20px;
+  }
+
+  .colHeader{
+    background-color: #343a40;
+    color:white;
+    padding:20 0px;
+    margin:0px 0px;
+  }
+  .noLRPadding{
+    padding:0px 0px !important; 
+  }
+
+  .listText{
+    padding:2px 10px;
+    margin:5px 2px -5px 2px;        
+  }
+
+  .oddRow{
+    background-color:snow;
+  }
+  
+
+  .previewImage {
+    text-align: center; 
+    padding: 30px;
+  }

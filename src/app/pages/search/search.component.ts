@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
 
   types: any = [{ value: "all", title: 'ALL' },  
   { value: "txt", title: 'TXT' },
+  { value: "wav", title: 'WAV' },
   { value: "jpg", title: 'JPG' }]
 
   modalRef!: BsModalRef;
@@ -43,20 +44,20 @@ export class SearchComponent implements OnInit {
   }
 
   getFiles() {
-    this.SpinnerService.show();
+    //this.SpinnerService.show();
     this.searchService.getFiles().subscribe((data) => {
       this.files = data;
       console.log('this:', this.files)
-      this.SpinnerService.hide();
+      //this.SpinnerService.hide();
     })
   }  
 
   searchText(text: string, type: string) {
-    this.SpinnerService.show();
+    //this.SpinnerService.show();
     this.searchService.searchtext(this.searchTxt, type).subscribe((data) => {
       this.files = data;
       console.log('this:', this.files)
-      this.SpinnerService.hide();
+      //this.SpinnerService.hide();
     })
   }
 }

@@ -8,7 +8,8 @@ import { Observable, of } from 'rxjs';
 export class SearchService {
 
   //private baseUrl = 'http://localhost:8080/interpretor/';
-    private baseUrl = 'https://20210226t004115-dot-hack-interpreters.el.r.appspot.com/interpretor/';
+    private baseUrl = 'https://1-dot-hack-interpreters.el.r.appspot.com/interpretor/';
+    
   
   constructor(private http: HttpClient) { }
 

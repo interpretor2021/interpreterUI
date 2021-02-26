@@ -12,6 +12,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { UploadComponent } from './pages/upload/upload.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { HomeComponent } from './pages/home/home.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 
@@ -32,7 +33,8 @@ import { HomeComponent } from './pages/home/home.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot() 
+    ModalModule.forRoot(),
+    NgxSpinnerModule   
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -27,25 +27,24 @@
         <div class="card-header">List of Files</div>
         <div class="container-flud col-12 noLRPadding" style="background-color: bisque;">
             <div class="row no-gutters col-12 colHeader">
-                <div class="col-3 colHeader">Name</div>
+                <div class="col-5 colHeader">Name</div>
                 <div class="col-1 colHeader">Type</div>
                 <div class="col-2 colHeader">Size</div>
-                <div class="col-3 colHeader"></div>
-                <div class="col-2 colHeader"></div>
+                <div class="col-3 colHeader"></div>                
             </div>
             <div style="overflow-y: scroll; height: 40vh">
                 <div class="row no-gutters col-12" *ngFor="let file of files let i=index"
                     [ngClass]="{'oddRow': i%2==1}">
-                    <div class="col-3 listText"><a class="nav-link" routerLink="/upload">{{file?.filename}}</a></div>
+                    <div class="col-5 listText"><a class="nav-link" routerLink="/upload">{{file?.filename}}</a></div>
                     <div class="col-1 listText">{{file?.filetype}}</div>
-                    <div class="col-2 listText">{{file?.filesize}}</div>
+                    <div class="col-1 listText">{{file?.filesize}}</div>
                     <!-- <div class="col-3 listText" style="text-align: right;"><button type="button" (click) = "showText()" class="btn btn-outline-secondary btn-sm">Preview</button></div> -->
                     <div class="col-3 listText" style="text-align: right;">
                         <button type="button" class="btn btn-outline-secondary btn-sm"
                             (click)="openModal(template, file)">Preview</button>
                     </div>
-                    <div class="col-2 listText"><button type="button" (click)="searchText('2','2')"
-                            class="btn btn-outline-secondary btn-sm">Read out Loud</button></div>
+                    <!-- <div class="col-2 listText"><button type="button" (click)="searchText('2','2')"
+                            class="btn btn-outline-secondary btn-sm">Read out Loud</button></div> -->
                 </div>
             </div>
         </div>
@@ -66,4 +65,10 @@
             <textarea *ngIf="selectedFile.filetype=='txt'" rows="10" cols="40">{{filecontent}}</textarea>
         </div>
     </div>
+    <div class="col-2 listText"><button type="button" (click)="searchText('2','2')"
+        class="btn btn-outline-secondary btn-sm">Speak</button></div>    
 </ng-template>
+
+<ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-spin-clockwise">  
+    <p style="color: white">Please Wait. </p>  
+</ngx-spinner>

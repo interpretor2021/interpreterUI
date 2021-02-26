@@ -1,6 +1,7 @@
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { SearchService } from 'src/app/services/search.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +21,9 @@ export class SearchComponent implements OnInit {
   { value: "jpg", title: 'JPG' }]
 
   modalRef!: BsModalRef;
-  constructor(private searchService: SearchService, private modalService: BsModalService) { }
+  constructor(private searchService: SearchService, 
+    private modalService: BsModalService,
+    private SpinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
     this.getFiles()    
@@ -40,16 +43,20 @@ export class SearchComponent implements OnInit {
   }
 
   getFiles() {
+    this.SpinnerService.show();
     this.searchService.getFiles().subscribe((data) => {
       this.files = data;
       console.log('this:', this.files)
+      this.SpinnerService.hide();
     })
   }  
 
   searchText(text: string, type: string) {
+    this.SpinnerService.show();
     this.searchService.searchtext(this.searchTxt, type).subscribe((data) => {
       this.files = data;
       console.log('this:', this.files)
+      this.SpinnerService.hide();
     })
   }
 }

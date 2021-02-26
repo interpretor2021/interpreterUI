@@ -7,37 +7,23 @@ import { Observable, of } from 'rxjs';
 })
 export class SearchService {
 
-  //private baseUrl = 'http://localhost:8080';
-  private baseUrl = 'http://localhost:7015/interpretor/';
-
-  constructor(private http: HttpClient) {
-    
-   }
+  private baseUrl = 'http://localhost:8080/interpretor/';
+  
+  //private baseUrl = 'https://20210226t004115-dot-hack-interpreters.el.r.appspot.com/interpretor/';
+  
+  constructor(private http: HttpClient) { }
 
   getFiles(): Observable<any> {
-    //return this.http.get(`${this.baseUrl}/files`);
-    const filerec =[
-      {name:"test1" ,size:"232"},
-      {name:"test2" ,size:"1232"},
-      {name:"test3" , size:"3232"},
-    ]
-    //return  of(filerec)
-    return this.http.get(`${this.baseUrl}filelistallcloud`)
-    
+    return this.http.get(`${this.baseUrl}filelistallcloud`)    
   }
 
-  getFile(){
-    //return this.http.get('/assets/test.txt') 
-    return this.http.get(`${this.baseUrl}`)
-  }
-
-  getFilePreview(fileName:string){
-    console.log('sdfsdfsd' , fileName)
+  getFilePreview(fileName:string){    
     return this.http.get(`${this.baseUrl}extracttext?file=` + fileName)
   }
 
   searchtext(searchText:string, type:string){
-    console.log('sdfsdfsd' , searchText)
+    console.log('searchText:' , searchText)
     return this.http.get(`${this.baseUrl}searchtext?text=` + searchText + '&type=' + type)
   }
+  
 }

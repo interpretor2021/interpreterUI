@@ -16,9 +16,9 @@ export class UploadComponent implements OnInit {
   message = '';
 
 
-  public imagePath:any;
+  public imagePath: any;
   imgURL: any;
-  
+
   fileInfos?: Observable<any>;
 
   constructor(private uploadService: UploadService) { }
@@ -30,17 +30,17 @@ export class UploadComponent implements OnInit {
     this.selectedFiles = event.target.files;
     this.preview(this.selectedFiles)
   }
-  
+
 
   upload(): void {
     this.progress = 0;
-  
+
     if (this.selectedFiles) {
       const file: File | null = this.selectedFiles.item(0);
-  
+
       if (file) {
         this.currentFile = file;
-  
+
         this.uploadService.upload(this.currentFile).subscribe(
           (event: any) => {
             if (event.type === HttpEventType.UploadProgress) {
@@ -53,37 +53,32 @@ export class UploadComponent implements OnInit {
           (err: any) => {
             console.log(err);
             this.progress = 0;
-  
+
             if (err.error && err.error.message) {
               this.message = err.error.message;
             } else {
               this.message = 'Could not upload the file!';
             }
-  
+
             this.currentFile = undefined;
           });
       }
-  
+
       this.selectedFiles = undefined;
     }
   }
 
 
-  preview(files:any) {
+  preview(files: any) {
     if (files.length === 0)
       return;
- 
+
     var mimeType = files[0].type;
-    // if (mimeType.match(/image\/*/) == null) {
-    //   this.message = "Only images are supported.";
-    //   return;
-    // }
- 
     var reader = new FileReader();
     this.imagePath = files;
-    reader.readAsDataURL(files[0]); 
-    reader.onload = (_event) => { 
-      this.imgURL = reader.result; 
+    reader.readAsDataURL(files[0]);
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
     }
   }
 

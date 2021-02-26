@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class UploadService {
-  private baseUrl = 'http://localhost:7015/interpretor/';
+  private baseUrl = 'http://localhost:8080/interpretor/';  
+  //private baseUrl = 'https://20210226t004115-dot-hack-interpreters.el.r.appspot.com/interpretor/';
+
   
   constructor(private http: HttpClient) {
 
@@ -31,7 +33,7 @@ export class UploadService {
     
     formdata.append('file', file);  
    
-    return this.http.post(`${this.baseUrl}uploadFile/` , formdata);  
+    return this.http.post(`${this.baseUrl}uploadFileCloud/` , formdata);  
   }
 
   getFiles(): Observable<any> {

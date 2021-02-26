@@ -12,11 +12,10 @@ export class SearchComponent implements OnInit {
   fileURL = ''
   filecontent = ''
   searchTxt: string = ''
-  fileType: string = ''
+  fileType: string = 'all'
   selectedFile: any
 
-  types: any = [{ value: "all", title: 'ALL' },
-  { value: "pdf", title: 'PDF' },
+  types: any = [{ value: "all", title: 'ALL' },  
   { value: "txt", title: 'TXT' },
   { value: "jpg", title: 'JPG' }]
 
@@ -24,17 +23,15 @@ export class SearchComponent implements OnInit {
   constructor(private searchService: SearchService, private modalService: BsModalService) { }
 
   ngOnInit(): void {
-    this.getFiles()
-    this.getFile()
+    this.getFiles()    
   }
 
   openModal(template: TemplateRef<any>, file: any) {
     this.modalRef = this.modalService.show(template);
-    this.fileURL = file.filename
+    this.fileURL = file.filepath
     this.selectedFile = file
     console.log('he---------', file, this.fileURL)
-    //if(file.filetype !=)
-
+    
     this.searchService.getFilePreview(this.fileURL).subscribe((data: any) => {
       this.filecontent = data.response;
       console.log('this:', this.files)
@@ -47,14 +44,7 @@ export class SearchComponent implements OnInit {
       this.files = data;
       console.log('this:', this.files)
     })
-  }
-
-  getFile() {
-    this.searchService.getFile().subscribe((data) => {
-      // this. files= data;
-      console.log('this data:', data)
-    })
-  }
+  }  
 
   searchText(text: string, type: string) {
     this.searchService.searchtext(this.searchTxt, type).subscribe((data) => {
@@ -62,7 +52,4 @@ export class SearchComponent implements OnInit {
       console.log('this:', this.files)
     })
   }
-
-
-
 }

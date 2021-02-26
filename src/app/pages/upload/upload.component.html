@@ -1,8 +1,7 @@
 <div class="pageHeaderLabel">
   <h3 class="centerText">Upload Page</h3>
   <br>
-  <br>
-  <br>
+  <br>  
 </div>
 
 <div class="row offset-1 col-10">
@@ -12,7 +11,7 @@
       <div class="row">
         <div class="col-8">
           <label class="btn btn-default p-0">
-            <input #file type="file" (change)="selectFile($event)" />           
+            <input #file type="file" (change)="selectFile($event)" />
           </label>
         </div>
 
@@ -31,21 +30,9 @@
         </div>
       </div>
 
-      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>
-
-      <!-- <div class="card mt-3">
-    <div class="card-header">List of Files</div>
-    <ul
-      class="list-group list-group-flush"
-      *ngFor="let file of fileInfos | async"
-    >
-      <li class="list-group-item">
-        <a href="{{ file.url }}">{{ file.name }}</a>
-      </li>
-    </ul>
-  </div> -->
+      <div *ngIf="message" class="alert alert-secondary" role="alert">{{ message }}</div>     
     </div>
-    <div class="previewImage">      
+    <div class="previewImage">
       <img [src]="imgURL" height="200" *ngIf="imgURL">
     </div>
   </div>

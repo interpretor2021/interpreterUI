@@ -7,10 +7,10 @@
     <div class="card col-12 mt-3 noLRPadding">
         <div class="card col-12 card-header">
             <div class="row">
-                <div class="col-5"><input type="text" [(ngModel)]="searchTxt" placeholder="Please enter file name"
+                <div class="col-5"><input type="text" [(ngModel)]="searchTxt" placeholder="Please enter text"
                         maxlength="100" size="40"></div>
                 <div class="col-3">
-                    <select [(ngModel)]="fileType" style="width:100px;" placeholder="select">
+                    <select [(ngModel)]="fileType" style="width:100px;" placeholder="select" >
                         <option *ngFor="let type of types" [value]="type.value">{{type.title}}</option>
                     </select>
                 </div>
@@ -21,11 +21,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 <div class="row offset-1 col-10">
     <div class="card col-12 mt-3 noLRPadding">
@@ -67,8 +62,7 @@
     </div>
     <div class="modal-body">
         <div class="previewImage">
-
-            <img *ngIf="selectedFile.filetype=='jpg'" [src]="fileURL" height="200"> 
+            <img *ngIf="selectedFile.filetype=='jpg'" [src]="fileURL" height="200">
             <textarea *ngIf="selectedFile.filetype=='txt'" rows="10" cols="40">{{filecontent}}</textarea>
         </div>
     </div>
